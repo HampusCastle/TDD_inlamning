@@ -36,13 +36,4 @@ class SimplePlayerInteractionTest {
         playerInteraction.updatePlayerHealth(player, 10);
         assertEquals(10, player.getHp());
     }
-
-    @Test
-    @DisplayName("testar så det faila")
-    void testFailedPlayerHealth() {
-        playerInteraction = playerTestSetup("Mumme");
-        playerInteraction.updatePlayerHealth(player, 20);
-        assertEquals(10, player.getHp());
-    }
-
 }
