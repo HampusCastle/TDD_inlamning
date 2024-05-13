@@ -38,7 +38,7 @@ class SimplePlayerInteractionTest {
     }
 
     @Test
-    @DisplayName("testar så det failar")
+    @DisplayName("testar så det faila")
     void testFailedPlayerHealth() {
         playerInteraction = playerTestSetup("Mumme");
         playerInteraction.updatePlayerHealth(player, 20);
