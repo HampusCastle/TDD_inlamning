@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Player Details</title>
+</head>
+<body>
+<h1>Player Details</h1>
+<p>Name: <span th:text="${player.name}"></span></p>
+<p>HP: <span th:text="${player.hp}"></span></p>
+<p>Damage: <span th:text="${player.damage}"></span></p>
+<p>XP: <span th:text="${player.experience}"></span></p>
+<p>Have obtained silver ring: <span th:text="${player.silverRingObtained ? 'Yes' : 'No'}"></span></p>
+<p>Weapon: <span th:if="${player.weapon} != null" th:text="${player.weapon}"></span><span th:if="${player.weapon == null}">None</span></p>
+<p>Is alive?: <span th:text="${player.alive ? 'Yes' : 'No'}"></span></p>
+</body>
+</html>
