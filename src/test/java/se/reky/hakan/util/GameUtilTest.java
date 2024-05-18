@@ -19,7 +19,7 @@ class GameUtilTest {
 
     @Test
     @DisplayName("Testing when the game throws an exception")
-    void toLowerCaseButFirstLetterCapitalized() throws Exception {
+    void toLowerCaseButFirstLetterCapitalized() {
         assertThrows(GameException.class, () -> gameUtil.toLowerCaseButFirstLetterCapitalized(null));
     }
 }

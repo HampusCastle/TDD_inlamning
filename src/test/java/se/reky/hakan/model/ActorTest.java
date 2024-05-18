@@ -18,7 +18,7 @@ class ActorTest {
     }
 
     @Test
-    @DisplayName("Testa ättack")
+    @DisplayName("Testa attack")
     void testAttack() {
         goblin.attack(player);
         assertEquals(1, player.getHp());

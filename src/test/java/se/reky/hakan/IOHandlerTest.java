@@ -11,8 +11,8 @@ class IOHandlerTest {
 
     private IOHandler ioHandler;
 
-    private IOHandler testHandler (String dataForScanner) {
-        Scanner scanner = new Scanner(dataForScanner);
+    private IOHandler testHandler (String scannerData) {
+        Scanner scanner = new Scanner(scannerData);
         return new IOHandler(scanner);
     }
 

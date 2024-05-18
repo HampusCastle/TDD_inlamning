@@ -22,7 +22,7 @@ class SimplePlayerInteractionTest {
     }
 
     @Test
-    @DisplayName("testa namgivning av spelare")
+    @DisplayName("testa instansiering av spelare")
     void testSetupPlayer() {
         playerInteraction = playerTestSetup("Ragnar Lothbrok");
         playerInteraction.setupPlayer(player);
@@ -30,7 +30,7 @@ class SimplePlayerInteractionTest {
     }
 
     @Test
-    @DisplayName("Testar så hp stämmer")
+    @DisplayName("Testar så att hp stämmer")
     void testUpdatePlayerHealth() {
         playerInteraction = playerTestSetup("Loki");
         playerInteraction.updatePlayerHealth(player, 10);
