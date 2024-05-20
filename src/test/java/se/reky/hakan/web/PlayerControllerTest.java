@@ -3,9 +3,13 @@ package se.reky.hakan.web;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,12 +17,18 @@ import static org.junit.jupiter.api.Assertions.*;
 @Disabled
 class PlayerControllerTest {
 
-    static ChromeDriver driver;
+    static WebDriver driver;
+    static WebDriverWait wait;
+
+    @BeforeAll
+    static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+    }
 
     @BeforeEach
     void setUp() {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("http://localhost:8080/players");
     }
 
@@ -55,12 +65,19 @@ class PlayerControllerTest {
 
     @Test
     @DisplayName("testar knappens text")
-    public void buttontext () {
+    public void buttontext() {
         WebElement button = driver.findElement(By.tagName("button"));
         String buttonText = button.getText();
         String expectedText = "Logga in";
         assertEquals(expectedText, buttonText, "Knappen säger inte 'Logga in'");
-
     }
 
+    @Test
+    @DisplayName("kollar så spelarnamn matchar på båda sidor")
+    void verifyPlayerDetailsPage() {
+        String expectedPlayerName = driver.findElement(By.className("player-name")).getText();
+        driver.findElement(By.className("player-name")).click();
+        String actualPlayerName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("span"))).getText();
+        assertEquals(expectedPlayerName, actualPlayerName, "Player name should match on the details page");
+    }
 }
